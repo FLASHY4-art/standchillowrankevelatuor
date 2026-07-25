@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>StandChillow Rank Evaluator</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+/* 🔥 SİYAH ARKA PLAN */
+body{
+height:100vh;
+color:white;
+background: radial-gradient(circle at top, #1a1a1a, #000 70%),
+linear-gradient(135deg, #0f0f0f, #050505);
+overflow:hidden;
+}
+
+/* GLOW */
+body::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at 20% 20%, rgba(155,92,255,0.25), transparent 40%),
+radial-gradient(circle at 80% 60%, rgba(255,0,204,0.15), transparent 40%);
+}
+
+/* CONTAINER */
+.container{
+position:relative;
+z-index:2;
+padding:30px;
+}
+
+.title{
+text-align:center;
+margin-bottom:40px;
+}
+
+.title h2{
+letter-spacing:10px;
+color:#aaa;
+}
+
+.title h1{
+font-size:70px;
+background:linear-gradient(45deg,#9b5cff,#ff00cc);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* FLEX */
+.flex{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+/* CARD */
+.card{
+background: rgba(15,15,15,0.85);
+backdrop-filter: blur(10px);
+border:1px solid rgba(155,92,255,0.3);
+box-shadow:0 0 25px rgba(155,92,255,0.4);
+padding:25px;
+border-radius:15px;
+width:350px;
+}
+
+/* INPUT */
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+background:#111;
+color:white;
+}
+
+/* STATS */
+.stats{
+display:flex;
+gap:10px;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+background:linear-gradient(45deg,#9b5cff,#ff00cc);
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #ff00cc;
+}
+
+/* RANK */
+.rank{
+text-align:center;
+font-size:28px;
+margin-top:15px;
+}
+
+/* TABLE */
+table{
+width:100%;
+margin-top:10px;
+border-collapse:collapse;
+}
+
+td,th{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="title">
+<h2>STAND CHILLOW</h2>
+<h1>RANK EVALUATOR</h1>
+</div>
+
+<div class="flex">
+
+<!-- PLAYER -->
+<div class="card">
+<h3>PLAYER STATS</h3>
+
+<input id="name" placeholder="Username">
+
+<div class="stats">
+<input id="k" type="number" placeholder="Kills">
+<input id="d" type="number" placeholder="Deaths">
+<input id="a" type="number" placeholder="Assists">
+</div>
+
+<button onclick="calc()">CALCULATE</button>
+
+<div class="rank" id="rank">UNRANKED</div>
+</div>
+
+<!-- LEADERBOARD -->
+<div class="card">
+<h3>LEADERBOARD</h3>
+
+<table>
+<tr>
+<th>#</th>
+<th>Player</th>
+<th>Score</th>
+<th>Rank</th>
+</tr>
+
+<tbody id="board"></tbody>
+</table>
+
+</div>
+
+</div>
+</div>
+
+<script>
+let players=[];
+
+function calc(){
+
+let name = document.getElementById("name").value || "Player";
+let k = parseInt(document.getElementById("k").value) || 0;
+let d = parseInt(document.getElementById("d").value) || 0;
+let a = parseInt(document.getElementById("a").value) || 0;
+
+/* 🔥 ZOR SİSTEM */
+let score = k + (a * 0.5) - (d * 0.7);
+if(score < 0) score = 0;
+
+/* 🎯 30 PUAN = 1 RANK */
+let rank = "Bronze";
+
+if(score >= 180) rank = "Legend";
+else if(score >= 150) rank = "Master";
+else if(score >= 120) rank = "Diamond";
+else if(score >= 90) rank = "Platinum";
+else if(score >= 60) rank = "Gold";
+else if(score >= 30) rank = "Silver";
+
+/* YAZDIR */
+document.getElementById("rank").innerText = rank;
+
+/* LİSTE */
+players.push({name, score: score.toFixed(1), rank});
+players.sort((a,b)=>b.score - a.score);
+
+let html="";
+players.forEach((p,i)=>{
+html+=`
+<tr>
+<td>${i+1}</td>
+<td>${p.name}</td>
+<td>${p.score}</td>
+<td>${p.rank}</td>
+</tr>`;
+});
+
+document.getElementById("board").innerHTML = html;
+
+}
+</script>
+
+</body>
+</html>
