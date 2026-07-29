@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SC FLASHY STORE</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#171a21;
+color:white;
+overflow-x:hidden;
+}
+
+
+/* Arkadaki logo */
+
+body::before{
+content:"SC FLASHY";
+position:fixed;
+top:35%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:150px;
+font-weight:900;
+color:rgba(255,255,255,0.03);
+z-index:-1;
+}
+
+
+/* Header */
+
+header{
+background:#10141b;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#66c0f4;
+}
+
+
+nav a{
+color:#ddd;
+text-decoration:none;
+margin-left:20px;
+}
+
+
+.container{
+padding:40px;
+}
+
+
+h1{
+margin-bottom:30px;
+}
+
+
+
+/* Kartlar */
+
+.cards{
+
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+
+}
+
+
+
+.card{
+
+background:#1b2838;
+border-radius:12px;
+padding:20px;
+transition:.3s;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.image{
+
+height:160px;
+
+background:#0b0f14;
+
+border-radius:10px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:#777;
+
+margin-bottom:15px;
+
+font-size:18px;
+
+}
+
+
+
+h2{
+
+margin-bottom:10px;
+
+}
+
+
+.desc{
+
+color:#aaa;
+
+}
+
+
+
+button{
+
+width:100%;
+
+padding:13px;
+
+margin-top:20px;
+
+background:#66c0f4;
+
+border:none;
+
+border-radius:6px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#4aa3d8;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+SC FLASHY
+</div>
+
+
+<nav>
+
+<a href="#">Ana Sayfa</a>
+
+<a href="#">Oyunlar</a>
+
+<a href="#">İndir</a>
+
+</nav>
+
+
+</header>
+
+
+
+<div class="container">
+
+
+<h1>🎮 SC FLASHY STORE</h1>
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+<div class="image">
+Minecraft Java
+</div>
+
+<h2>⛏️ Minecraft Java</h2>
+
+<p class="desc">
+Blocksmiths Launcher ile Java sürümü
+</p>
+
+<button onclick="window.open('https://app.blocksmiths.net/')">
+İNDİR
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<div class="image">
+Minecraft Bedrock
+</div>
+
+<h2>🟩 Minecraft Bedrock</h2>
+
+<p class="desc">
+Bedrock Edition dosyası
+</p>
+
+<button onclick="window.open('https://dosya.co/2wuvqirknbcv/Minecraft_Bedrock.rar.html')">
+İNDİR
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<div class="image">
+StandChillow
+</div>
+
+<h2>🎮 StandChillow PC</h2>
+
+<p class="desc">
+StandChillow PC versiyonu
+</p>
+
+<button onclick="window.open('https://www.mediafire.com/file/rbm6eja75gqmvju/Standchillow+FLASHY.rar/file')">
+İNDİR
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<div class="image">
+🌍 Dünya Dosyası
+</div>
+
+<h2>🌍 Güncel Dünyam</h2>
+
+<p class="desc">
+SC FLASHY Minecraft dünyası
+</p>
+
+<button onclick="window.open('https://dosya.co/o4k5c0s26frw/g%C3%BCncel_d%C3%BCnyam.rar.html')">
+İNDİR
+</button>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+</body>
+</html>
